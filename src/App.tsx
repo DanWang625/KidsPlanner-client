@@ -1,9 +1,13 @@
 import './App.css'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Container from '@mui/material/Container';
 import Navbar from './components/Navbar';
-import Calendar from 'react-calendar';
-import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Users from './containers/users/Users'
+import Homepage from './components/Homepage';
+import Register from './auth/Register';
+import Login  from './auth/Login';
+
+
 
 
 const theme = createTheme({
@@ -20,18 +24,21 @@ const theme = createTheme({
   },
 });
 
-type ValuePiece = Date | null;
-type Value = ValuePiece | [ValuePiece, ValuePiece];
+
 
 function App() {
-  const [value, onChange] = useState<Value>(new Date());
   return (
     <ThemeProvider theme={theme}>
+      <BrowserRouter basename="/">
+      {/* <a href="/users">users page</a> */}
         <Navbar />
-        <Container>
-          <h1>Welcome to Kids Planner App</h1>
-          <Calendar onChange={onChange} value={value} />
-        </Container>
+        <Routes>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Homepage />} />
+          <Route path="/users" element={<Users />} />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }

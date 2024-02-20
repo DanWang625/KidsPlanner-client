@@ -222,7 +222,7 @@ export default function PrimarySearchAppBar() {
               onClick={handleMobileMenuOpen}
               color="inherit"
             >
-              <MoreIcon />
+              <MoreIcon />s
             </IconButton>
           </Box>
         </Toolbar>
