@@ -6,6 +6,7 @@ import Users from './containers/users/Users'
 import Homepage from './components/Homepage';
 import Register from './auth/Register';
 import Login  from './auth/Login';
+import UserDetail from './containers/users/UserDetail';
 
 
 
@@ -37,6 +38,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Homepage />} />
           <Route path="/users" element={<Users />} />
+          <Route path="/users/:userId" element={<UserDetail />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

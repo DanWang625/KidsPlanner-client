@@ -4,11 +4,25 @@ import StyledInput from '../components/StyledInput';
 import Label from '../components/Label';
 import HelperText from '../components/HelperText';
 import { Button } from '@mui/material';
+import { getUsers } from '../api/api';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Login() {
-
+  const navigate = useNavigate()
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+
+  async function handleUserLogin() {
+    try {
+      const user = await getUsers()
+      window.alert('Congrates! You have logged in successfully!')
+      console.log(user)
+      navigate('/users/:id')
+    } catch (err) {
+      alert(err)
+    }
+  }
 
 
   return (
@@ -25,7 +39,7 @@ export default function Login() {
             <StyledInput type="password" placeholder="Write your password here" onChange={e => setPassword(e.target.value)}/>
             <HelperText />
         </FormControl>
-        <Button sx={{marginTop: 5}} variant='contained'>LOG IN</Button>
+        <Button sx={{marginTop: 5}} variant='contained' onClick={handleUserLogin}>LOG IN</Button>
     </FormControl>
     </>
   )

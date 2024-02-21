@@ -1,13 +1,12 @@
 
-import React, { useState } from 'react';
 import { Container, Button, Stack } from '@mui/material';
 import { Link } from 'react-router-dom'
-import CreateUser from '../containers/users/CreateUser';
 // import { Calendar } from 'react-calendar';
 // import 'react-big-calendar/lib/css/react-big-calendar.css';
+// import { useState } from 'react';
 
-// type ValuePiece = Date | null;
-// type Value = ValuePiece | [ValuePiece, ValuePiece];
+type ValuePiece = Date | null;
+type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 function Homepage() {
     const currentDate = new Date().toDateString(); // Get the present date in YYYY-MM-DD format
@@ -26,8 +25,8 @@ function Homepage() {
                         <Link to='/login'>LOGIN</Link>
                     </Button>
                 </Stack>
-                {/* <Calendar onChange={onChange} value={value} /> */}
             </Container>
+            {/* <Calendar onChange={onChange} value={value} /> */}
         </>
     )
 }

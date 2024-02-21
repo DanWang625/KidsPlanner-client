@@ -25,9 +25,10 @@ function UserDetail() {
         <h3>{user.age}</h3>
         <p>You have {user.points} points </p>
         <p>Your tasks for today:</p>
-        {(user.tasks).map((task) => {
-            <li>task</li>
-        })}
+        {(user.tasks).map((task, index) => (
+            <li key={index}>{task.title}</li>
+        ))}
         </>
     )
 }
+export default UserDetail
