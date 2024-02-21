@@ -20,9 +20,11 @@ function Homepage() {
                 <h3>Are you ready to plan your day?</h3>
                 <Stack style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}} direction='row' spacing={4}>
                     <Button variant='contained' size='large'>
-                        <Link to='/register'>Yes</Link>
+                        <Link to='/register'>CREATE YOUR ACCOUNT</Link>
                     </Button>
-                    <Button variant='contained' size='large'>Not Now</Button>
+                    <Button variant='contained' size='large'>
+                        <Link to='/login'>LOGIN</Link>
+                    </Button>
                 </Stack>
                 {/* <Calendar onChange={onChange} value={value} /> */}
             </Container>

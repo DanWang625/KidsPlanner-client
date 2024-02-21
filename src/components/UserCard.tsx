@@ -12,7 +12,7 @@ interface UserProps {
 const StyledCard = styled(Card)`
     margin: 20px;
 `
-function SellerCard(props: UserProps) {
+function UserCard(props: UserProps) {
     return (
         <StyledCard>
             <CardContent>
@@ -30,4 +30,4 @@ function SellerCard(props: UserProps) {
     )
 }
 
-export default SellerCard
+export default UserCard

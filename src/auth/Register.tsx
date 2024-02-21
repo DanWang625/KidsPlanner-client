@@ -5,13 +5,31 @@ import { Button, Stack } from '@mui/material';
 import StyledInput from '../components/StyledInput';
 import HelperText from '../components/HelperText';
 import Label from "../components/Label";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 function Register() {
+    const navigate = useNavigate()
     const [name, setName] = useState("")
     const [age, setAge] = useState(0)
     const [password, setPassword] = useState("")
+    async function handleRegisterUser() {
+        try {
+            const response = await fetch("http://localhost:3000/users", {
+                method: "POST",
+                body: JSON.stringify({ name, age, password }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            const data = await response.json()
+            window.alert('Congrates! You have registered successfully!')
+            console.log(data)
+            navigate('/login')
+        } catch (err) {
+            alert(err)
+        }
+    }
     return (
         <>
             <h1>Create Your Own Account to Plan Your Days</h1>
@@ -31,9 +49,7 @@ function Register() {
             <HelperText />
             </FormControl>
             <Stack style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 30}} direction='row' spacing={4}>
-                <Button variant='contained' size='large'>
-                    <Link to='/register'>REGISTER</Link>
-                </Button>
+                <Button variant='contained' size='large' onClick={handleRegisterUser}>REGISTER</Button>
                 <Button variant='contained' size='large'>
                     <Link to='/login'>LOG IN</Link>
                 </Button>
