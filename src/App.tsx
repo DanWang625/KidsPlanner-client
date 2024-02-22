@@ -13,6 +13,7 @@ import UserDetail from './containers/users/UserDetail';
 
 const theme = createTheme({
   palette: {
+    mode: 'light',
     primary: {
       main: '#00FFFF', // Aqua Blue
     },

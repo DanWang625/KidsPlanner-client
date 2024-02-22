@@ -26,7 +26,6 @@
     "eslint": "^8.56.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "react-big-calendar": "^1.10.2",
     "react-calendar": "^4.8.0",
     "react-router-dom": "^6.22.1",
     "typescript": "^5.2.2",

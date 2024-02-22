@@ -6,6 +6,7 @@ import HelperText from '../components/HelperText';
 import { Button } from '@mui/material';
 import { getUsers } from '../api/api';
 import { useNavigate } from 'react-router-dom';
+// import bcrypt from 'bcrypt'
 
 
 export default function Login() {
@@ -15,21 +16,18 @@ export default function Login() {
 
   async function handleUserLogin() {
     try {
-      const response = await fetch("http://localhost:3000/login", {
-            method: "POST",
-            body: JSON.stringify({ name, password }),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
-
-        if (!response.ok) {
-            throw new Error("Invalid name or password");
+      const existingUsers = await getUsers()
+      let user
+      for (let existingUser of existingUsers) {
+        if (existingUser.name === name) {
+          user = existingUser
         }
-      const user = await getUsers()
-      window.alert('Congrates! You have logged in successfully!')
-      console.log(user)
-      navigate('/users/:id')
+      }
+      // const passwordMatch = await bcrypt.compare(password, user.password)
+      if (user) {
+        window.alert('Congrates! You have logged in successfully!')
+        navigate(`/users/${user.id}`)
+      }
     } catch (err) {
       alert(err)
     }

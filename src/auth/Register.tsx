@@ -6,6 +6,7 @@ import StyledInput from '../components/StyledInput';
 import HelperText from '../components/HelperText';
 import Label from "../components/Label";
 import { Link, useNavigate } from "react-router-dom";
+import { getUsers } from "../api/api";
 
 
 function Register() {
@@ -15,9 +16,8 @@ function Register() {
     const [password, setPassword] = useState("")
     async function handleRegisterUser() {
         try {
-            const existingUsersResponse = await fetch("http://localhost:3000/users")
-            const existingUsersData = await existingUsersResponse.json()
-            for (let user of existingUsersData) {
+            const existingUsers = await getUsers()
+            for (let user of existingUsers) {
                 if (user.name === name) {
                     window.alert('User with this name already exists. Please choose a differen name!')
                     return
