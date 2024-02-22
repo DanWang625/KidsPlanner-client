@@ -15,6 +15,17 @@ export default function Login() {
 
   async function handleUserLogin() {
     try {
+      const response = await fetch("http://localhost:3000/login", {
+            method: "POST",
+            body: JSON.stringify({ name, password }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error("Invalid name or password");
+        }
       const user = await getUsers()
       window.alert('Congrates! You have logged in successfully!')
       console.log(user)

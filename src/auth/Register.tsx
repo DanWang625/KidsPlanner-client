@@ -15,6 +15,14 @@ function Register() {
     const [password, setPassword] = useState("")
     async function handleRegisterUser() {
         try {
+            const existingUsersResponse = await fetch("http://localhost:3000/users")
+            const existingUsersData = await existingUsersResponse.json()
+            for (let user of existingUsersData) {
+                if (user.name === name) {
+                    window.alert('User with this name already exists. Please choose a differen name!')
+                    return
+                }
+            }
             const response = await fetch("http://localhost:3000/users", {
                 method: "POST",
                 body: JSON.stringify({ name, age, password }),
@@ -22,6 +30,9 @@ function Register() {
                     "Content-Type": "application/json"
                 }
             })
+            if (!response.ok) {
+                throw new Error("Whoops, registration failed")
+            }
             const data = await response.json()
             window.alert('Congrates! You have registered successfully!')
             console.log(data)
