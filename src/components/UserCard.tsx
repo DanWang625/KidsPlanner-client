@@ -9,9 +9,12 @@ interface UserProps {
 }
 
 const StyledCard = styled(Card)`
-    margin: 20px;
+    margin: 40px auto;
+    width: 60%;
+    background-color: #b67fc5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-`
+    `
 function UserCard(props: UserProps) {
     // console.log(props)
     return (
@@ -24,6 +27,11 @@ function UserCard(props: UserProps) {
                 <NavLink to={`/users/${props.userId}`}>
                     <Button variant="outlined">
                         Visit user Page!
+                    </Button>
+                </NavLink>
+                <NavLink to={`/users/${props.userId}`}>
+                    <Button variant="outlined" color='secondary'>
+                        Delete user!
                     </Button>
                 </NavLink>
             </CardActions>

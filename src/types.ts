@@ -8,6 +8,7 @@ export interface User {
 }
 
 export interface Task {
+    _id: string;
     title: string;
     description: string;
     status: ['Not Started', 'In Progress', 'Finished'];
@@ -15,6 +16,7 @@ export interface Task {
 }
 
 export interface Reward {
+    _id: string;
     title: string;
     descriptioin: string;
     costs: number

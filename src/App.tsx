@@ -7,6 +7,8 @@ import Homepage from './components/Homepage';
 import Register from './auth/Register';
 import Login  from './auth/Login';
 import UserDetail from './containers/users/UserDetail';
+import Tasks from './containers/tasks/Tasks';
+import Rewards from './containers/rewards/Rewards';
 
 
 
@@ -40,6 +42,8 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/users" element={<Users />} />
           <Route path="/users/:userId" element={<UserDetail />} />
+          <Route path="/tasks" element={<Tasks />} />
+          <Route path="/rewards" element={<Rewards />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

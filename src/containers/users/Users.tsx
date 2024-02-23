@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { User } from "../../types";
 import { getUsers } from "../../api/api";
 import UserCard from "../../components/UserCard";
+import { Paper } from "@mui/material";
+
 
 
 function Users() {
@@ -11,11 +13,12 @@ function Users() {
     }, [])
     return (
         <>
-        <h1>Users Page</h1>
-        {users.map((user) =>
-            <UserCard userName={user.name} userAge={user.age} userId={user._id} />
-        )}
-
+            <Paper sx={{ margin: 10 }}>
+                <h1>Users Page</h1>
+                {users.map((user) =>
+                    <UserCard userName={user.name} userAge={user.age} userId={user._id} />
+                )}
+            </Paper>
         </>
     )
 }
