@@ -5,14 +5,15 @@ import { NavLink } from "react-router-dom";
 interface UserProps {
     userName: string;
     userAge: number;
-    userId?: string;
+    userId: string;
 }
-
 
 const StyledCard = styled(Card)`
     margin: 20px;
+
 `
 function UserCard(props: UserProps) {
+    // console.log(props)
     return (
         <StyledCard>
             <CardContent>

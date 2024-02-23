@@ -24,9 +24,9 @@ export default function Login() {
         }
       }
       // const passwordMatch = await bcrypt.compare(password, user.password)
-      if (user) {
+      if (user && password) {
         window.alert('Congrates! You have logged in successfully!')
-        navigate(`/users/${user.id}`)
+        navigate(`/users/${user._id}`)
       }
     } catch (err) {
       alert(err)

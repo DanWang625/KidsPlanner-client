@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { User } from "../../types";
 import { getUsers } from "../../api/api";
-import { Card, Typography } from "@mui/material";
+import UserCard from "../../components/UserCard";
+
 
 function Users() {
     const [users, setUsers] = useState<User[]>([])
@@ -12,7 +13,7 @@ function Users() {
         <>
         <h1>Users Page</h1>
         {users.map((user) =>
-            <Card variant="outlined" key={user._id}> {user.name}  </Card>
+            <UserCard userName={user.name} userAge={user.age} userId={user._id} />
         )}
 
         </>
