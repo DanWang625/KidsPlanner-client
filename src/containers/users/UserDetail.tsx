@@ -15,7 +15,6 @@ function UserDetail() {
         .then(data => setUser(data.user))
         .catch(() => setErr(true))
     }, [])
-    // console.log("user data:::::", )
     console.log(user?.tasks)
     if (!user) {
         return (

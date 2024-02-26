@@ -4,29 +4,36 @@ import StyledInput from '../components/StyledInput';
 import Label from '../components/Label';
 import HelperText from '../components/HelperText';
 import { Button } from '@mui/material';
-import { getUsers } from '../api/api';
 import { useNavigate } from 'react-router-dom';
-// import bcrypt from 'bcrypt'
+import { getUsers } from '../api/api';
 
 
 export default function Login() {
   const navigate = useNavigate()
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
-
+  let id: string
   async function handleUserLogin() {
     try {
+      const response = await fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, password }),
+      })
       const existingUsers = await getUsers()
-      let user
-      for (let existingUser of existingUsers) {
-        if (existingUser.name === name) {
-          user = existingUser
+      for (let user of existingUsers) {
+        if (user.name === name) {
+          id = user._id
         }
       }
-      // const passwordMatch = await bcrypt.compare(password, user.password)
-      if (user && password) {
+
+      if (response.ok) {
         window.alert('Congrates! You have logged in successfully!')
-        navigate(`/users/${user._id}`)
+        navigate(`/users/${id}`)
+      } else {
+        window.alert('Invalud name or password, please try again!')
       }
     } catch (err) {
       alert(err)

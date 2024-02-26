@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Card, CardActions, CardContent, styled} from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 interface UserProps {
     userName: string;
@@ -16,7 +16,15 @@ const StyledCard = styled(Card)`
 
     `
 function UserCard(props: UserProps) {
-    // console.log(props)
+    const params = useParams()
+    console.log(params)
+    async function handleUpdateUser() {
+
+    }
+
+    async function handleDeleteUser() {
+
+    }
     return (
         <StyledCard>
             <CardContent key={props.userId}>
@@ -30,7 +38,12 @@ function UserCard(props: UserProps) {
                     </Button>
                 </NavLink>
                 <NavLink to={`/users/${props.userId}`}>
-                    <Button variant="outlined" color='secondary'>
+                    <Button variant="outlined" color='secondary' onClick={handleUpdateUser}>
+                        Update user!
+                    </Button>
+                </NavLink>
+                <NavLink to={`/users/${props.userId}`}>
+                    <Button variant="outlined" color='secondary' onClick={handleDeleteUser}>
                         Delete user!
                     </Button>
                 </NavLink>

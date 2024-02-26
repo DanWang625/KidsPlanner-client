@@ -60,7 +60,7 @@ function Register() {
             <HelperText />
             </FormControl>
             <Stack style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 30}} direction='row' spacing={4}>
-                <Button variant='contained' size='large' onClick={handleRegisterUser}>REGISTER</Button>
+                <Button variant='contained' size='large' onClick={handleRegisterUser}>REGISTER HERE</Button>
                 <Button variant='contained' size='large'>
                     <Link to='/login'>LOG IN</Link>
                 </Button>
