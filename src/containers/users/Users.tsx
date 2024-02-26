@@ -16,7 +16,7 @@ function Users() {
             <Paper sx={{ margin: 10 }}>
                 <h1>Users Page</h1>
                 {users.map((user) =>
-                    <UserCard userName={user.name} userAge={user.age} userId={user._id} />
+                    <UserCard key={user._id} userName={user.name} userAge={user.age} userId={user._id} />
                 )}
             </Paper>
         </>

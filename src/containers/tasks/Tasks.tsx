@@ -10,7 +10,7 @@ function Tasks() {
     useEffect(() => {
         getTasks().then((data) => setTasks(data))
     }, [])
-
+    console.log("tasks::::", tasks)
     if (tasks.length === 1)  {
         return (
         <>

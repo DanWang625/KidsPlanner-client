@@ -19,7 +19,7 @@ function UserCard(props: UserProps) {
     // console.log(props)
     return (
         <StyledCard>
-            <CardContent>
+            <CardContent key={props.userId}>
                 <h3>{props.userName}</h3>
                 <p>{props.userAge}</p>
             </CardContent>
