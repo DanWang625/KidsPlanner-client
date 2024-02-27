@@ -18,22 +18,31 @@ const StyledCard = styled(Card)`
     `
 function UserCard(props: UserProps) {
     const navigate = useNavigate()
+    const [name, setName] = useState('')
+    const [err, setErr] = useState('')
+    const [updated, setUpdated] = useState(false)
+    const [deleted, setDeleted] = useState(false)
     async function handleUpdateUser() {
-    //     try {
-    //         const response = await fetch(`http://localhost:3000/users/${props.userId}`, {
-    //             method: 'PUT',
-    //             headers: {
-    //             'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify({ name, password }),
-    //   })
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
+        try {
+            const response = await fetch(`http://localhost:3000/users/${props.userId}`, {
+                method: 'PUT',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name }),
+            })
+            if (!response.ok) {
+                throw new Error('Failed to update user')
+            }
+            setUpdated(true)
+        } catch (err) {
+            setErr(err)
+        }
+    }
+    if (updated) {
+        navigate(`/users/${props.userId}`)
     }
 
-    const [err, setErr] = useState('')
-    const [deleted, setDeleted] = useState(false)
     async function handleDeleteUser() {
         try {
             const response = await fetch(`http://localhost:3000/users/${props.userId}`, {
@@ -41,10 +50,10 @@ function UserCard(props: UserProps) {
                 headers: {
                 'Content-Type': 'application/json',
                 },
-        })
-        if (!response.ok) {
-            throw new Error('Failed to delete user')
-        }
+            })
+            if (!response.ok) {
+                throw new Error('Failed to delete user')
+            }
         setDeleted(true)
         } catch (err) {
             setErr(err)
@@ -55,27 +64,25 @@ function UserCard(props: UserProps) {
         navigate('/')
     }
     return (
-        <StyledCard>
-            <CardContent key={props.userId}>
+        <StyledCard key={props.userId}>
+            <CardContent>
                 <h3>{props.userName}</h3>
                 <p>{props.userAge}</p>
             </CardContent>
             <CardActions>
-                <NavLink to={`/users/${props.userId}`}>
-                    <Button variant="outlined">
-                        Visit user Page!
-                    </Button>
-                </NavLink>
-                <NavLink to={`/users/${props.userId}`}>
-                    <Button variant="outlined" color='secondary' onClick={handleUpdateUser}>
-                        Update user!
-                    </Button>
-                </NavLink>
-                {/* <NavLink to={`/users/${props.userId}`}> */}
-                    <Button variant="outlined" color='secondary' onClick={handleDeleteUser}>
-                        Delete user!
-                    </Button>
-                {/* </NavLink> */}
+
+                <Button variant="outlined" onClick={() => navigate(`/users/${props.userId}`)}>
+                    Visit user Page!
+                </Button>
+
+                <Button variant="outlined" color='secondary' onClick={handleUpdateUser}>
+                    Update user!
+                </Button>
+
+                <Button variant="outlined" color='error' onClick={handleDeleteUser}>
+                    Delete user!
+                </Button>
+
             </CardActions>
         </StyledCard>
     )

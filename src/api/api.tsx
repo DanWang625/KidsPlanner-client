@@ -1,3 +1,4 @@
+
 export async function getUsers() {
     try {
         const response = await fetch("http://localhost:3000/users", {
@@ -13,31 +14,31 @@ export async function getUsers() {
     }
 }
 
-export async function getTasks() {
+export async function getPlans(userId: string) {
     try {
-        const response = await fetch("http://localhost:3000/tasks", {
+        const response = await fetch(`http://localhost:3000/users/${userId}/plans`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
             }
         })
-        const tasks = await response.json()
-        return tasks
+        const plans = await response.json()
+        return plans
     } catch (err) {
         alert(err)
     }
 }
 
-export async function getRewards() {
+export async function getNotifications() {
     try {
-        const response = await fetch("http://localhost:3000/rewards", {
+        const response = await fetch("http://localhost:3000/notifications", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
             }
         })
-        const rewards = await response.json()
-        return rewards
+        const notifications = await response.json()
+        return notifications
     } catch (err) {
         alert(err)
     }

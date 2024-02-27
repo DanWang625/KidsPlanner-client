@@ -12,9 +12,14 @@ export interface Task {
     title: string;
     description: string;
     status: ['Not Started', 'In Progress', 'Finished'];
-    points: number
 }
 
+export interface Plan {
+    _id: string;
+    title: string;
+    description: string;
+    tasks: [Task]
+}
 export interface Reward {
     _id: string;
     title: string;

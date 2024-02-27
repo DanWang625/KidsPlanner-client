@@ -7,11 +7,8 @@ import Homepage from './components/Homepage';
 import Register from './auth/Register';
 import Login  from './auth/Login';
 import UserDetail from './containers/users/UserDetail';
-import Tasks from './containers/tasks/Tasks';
-import Rewards from './containers/rewards/Rewards';
-
-
-
+import Plans from './containers/plans/Plans';
+import PlanDetail from './containers/plans/PlanDetail';
 
 const theme = createTheme({
   palette: {
@@ -28,8 +25,6 @@ const theme = createTheme({
   },
 });
 
-
-
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -42,8 +37,8 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/users" element={<Users />} />
           <Route path="/users/:userId" element={<UserDetail />} />
-          <Route path="/tasks" element={<Tasks />} />
-          <Route path="/rewards" element={<Rewards />} />
+          <Route path="/users/:userId/plans" element={<Plans />} />
+          <Route path="/users/:userId/plans/:id" element={<PlanDetail />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

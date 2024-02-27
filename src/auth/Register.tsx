@@ -23,7 +23,7 @@ function Register() {
                     return
                 }
             }
-            const response = await fetch("http://localhost:3000/users", {
+            const response = await fetch("http://localhost:3000/register", {
                 method: "POST",
                 body: JSON.stringify({ name, age, password }),
                 headers: {
