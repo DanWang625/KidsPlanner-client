@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Card, CardActions, CardContent, styled} from "@mui/material";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { getUsers } from '../api/api';
 
 interface UserProps {
     userName: string;
@@ -16,14 +17,42 @@ const StyledCard = styled(Card)`
 
     `
 function UserCard(props: UserProps) {
-    const params = useParams()
-    console.log(params)
+    const navigate = useNavigate()
     async function handleUpdateUser() {
-
+    //     try {
+    //         const response = await fetch(`http://localhost:3000/users/${props.userId}`, {
+    //             method: 'PUT',
+    //             headers: {
+    //             'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify({ name, password }),
+    //   })
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
     }
 
+    const [err, setErr] = useState('')
+    const [deleted, setDeleted] = useState(false)
     async function handleDeleteUser() {
-
+        try {
+            const response = await fetch(`http://localhost:3000/users/${props.userId}`, {
+                method: 'DELETE',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+        })
+        if (!response.ok) {
+            throw new Error('Failed to delete user')
+        }
+        setDeleted(true)
+        } catch (err) {
+            setErr(err)
+        }
+    }
+    if (deleted) {
+        window.alert('deleted user succssfully')
+        navigate('/')
     }
     return (
         <StyledCard>
@@ -42,11 +71,11 @@ function UserCard(props: UserProps) {
                         Update user!
                     </Button>
                 </NavLink>
-                <NavLink to={`/users/${props.userId}`}>
+                {/* <NavLink to={`/users/${props.userId}`}> */}
                     <Button variant="outlined" color='secondary' onClick={handleDeleteUser}>
                         Delete user!
                     </Button>
-                </NavLink>
+                {/* </NavLink> */}
             </CardActions>
         </StyledCard>
     )

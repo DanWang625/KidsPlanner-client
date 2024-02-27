@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom"
 import { User } from "../../types"
 import { useEffect, useState } from "react"
-import AddDeleteTaskBtn from "../../components/AddDeleteTaskBtn"
 import { MenuList } from "@mui/material"
 
 function UserDetail() {
@@ -28,7 +27,6 @@ function UserDetail() {
                 <h2>You are {user.age} years old</h2>
                 <h3>You have {user.points || 0} points </h3>
                 <h3>You have no task today</h3>
-                <AddDeleteTaskBtn />
             </>
         )
     }
@@ -40,7 +38,6 @@ function UserDetail() {
                 <h2>You are {user.age} years old</h2>
                 <h3>You have {user.points || 0} points </h3>
                 {/* <h3>Your task is: {task}</h3> */}
-                <AddDeleteTaskBtn />
             </>
         )
     }
@@ -55,7 +52,6 @@ function UserDetail() {
                 <MenuList key={index}>{task.title || null}</MenuList>
             )} */}
             {/* <p>{user.tasks}</p> */}
-            <AddDeleteTaskBtn />
         </>
     )
 }

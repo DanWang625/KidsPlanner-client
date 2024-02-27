@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { getTasks } from "../../api/api"
 import { Task } from "../../types"
 import { MenuList } from "@mui/material"
-import AddDeleteTaskBtn from "../../components/AddDeleteTaskBtn"
 
 
 function Tasks() {
@@ -16,7 +15,6 @@ function Tasks() {
         <>
             <h1>Tasks page!</h1>
             <MenuList>{tasks[0].title}:  {tasks[0].description}</MenuList>
-            <AddDeleteTaskBtn />
         </>
         )
     }
@@ -26,7 +24,6 @@ function Tasks() {
             {tasks.map(task =>
                 <MenuList key={task._id}>{task.title}:  {task.description}</MenuList>
             )}
-            <AddDeleteTaskBtn />
         </>
     )
 }

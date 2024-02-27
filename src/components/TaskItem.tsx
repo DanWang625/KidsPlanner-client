@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 
 
 
-function AddDeleteTaskBtn() {
+function TaskItem() {
     const params = useParams()
     console.log(params)
     async function handleAddNewTask() {
@@ -28,4 +28,4 @@ function AddDeleteTaskBtn() {
     )
 }
 
-export default AddDeleteTaskBtn
+export default TaskItem
