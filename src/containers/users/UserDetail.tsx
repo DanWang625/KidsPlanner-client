@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { User } from "../../types"
 import { useEffect, useState } from "react"
-import { Button, MenuList } from "@mui/material"
+import { Button, ButtonGroup } from "@mui/material"
 
 function UserDetail() {
     const navigate = useNavigate()
@@ -26,7 +26,10 @@ function UserDetail() {
         <>
             <h1>Welcome {user.name}</h1>
             <h2>You are {user.age} years old</h2>
-            <Button variant="contained" onClick={() => navigate(`/users/${params.userId}/plans`)}>Click to check your plans</Button>
+            <ButtonGroup sx={{ gap: 10}}>
+                <Button variant="contained" onClick={() => navigate(`/users/${params.userId}/plans`)}>Click to check your plans</Button>
+                <Button variant="contained" color="secondary" onClick={() => navigate(`/users/${params.userId}/plans/create`)}>Click to create your plans</Button>
+            </ButtonGroup>
         </>
     )
 }

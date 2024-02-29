@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, Card, CardActions, CardContent, styled} from "@mui/material";
-import { NavLink, useNavigate } from "react-router-dom";
-import { getUsers } from '../api/api';
+import {  useNavigate } from "react-router-dom";
 
 interface UserProps {
     userName: string;
@@ -40,6 +39,7 @@ function UserCard(props: UserProps) {
         }
     }
     if (updated) {
+        window.alert('user was deleted')
         navigate(`/users/${props.userId}`)
     }
 

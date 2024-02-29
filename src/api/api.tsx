@@ -29,9 +29,9 @@ export async function getPlans(userId: string) {
     }
 }
 
-export async function getNotifications() {
+export async function getNotifications(userId: string) {
     try {
-        const response = await fetch("http://localhost:3000/notifications", {
+        const response = await fetch(`http://localhost:3000/users/${userId}/notifications`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"

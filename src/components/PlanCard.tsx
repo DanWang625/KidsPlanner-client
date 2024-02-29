@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, Card, CardActions, CardContent, styled} from "@mui/material";
-import { NavLink, useNavigate } from "react-router-dom";
-import { getUsers } from '../api/api';
+import {  useNavigate } from "react-router-dom";
 
 interface PlanProps {
     userId: string;
@@ -64,7 +63,6 @@ function PlanCard(props: PlanProps) {
     }
     if (deleted) {
         window.alert('deleted plan succssfully')
-        navigate('/plans')
     }
     return (
         <StyledCard key={props.planId}>

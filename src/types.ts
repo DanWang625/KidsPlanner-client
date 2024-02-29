@@ -17,3 +17,9 @@ export interface Plan {
     description: string;
     tasks: [Task]
 }
+
+export interface Notification {
+    _id: string;
+    message: string;
+    user: User
+}
