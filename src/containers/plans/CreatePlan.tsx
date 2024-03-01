@@ -1,26 +1,39 @@
 
 import { FormControl } from "@mui/base/FormControl";
 import { useState } from "react";
-import { Button, Stack } from '@mui/material';
+import { Button, FormControlLabel, Radio, RadioGroup, Stack } from '@mui/material';
 import StyledInput from '../../components/StyledInput';
 import HelperText from '../../components/HelperText';
 import Label from "../../components/Label";
 import { useParams } from "react-router-dom";
 import { Task } from "../../types";
-import React from "react";
 
 function CreatePlan() {
     const { userId } = useParams()
     // const navigate = useNavigate()
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
-    const [tasks, setTasks] = useState<Task[]>([])
+    const [tasks, setTasks] = useState<Task[]>()
+    const [taskId, setTaskId] = useState("")
+    const [taskTitle, setTaskTitle] = useState("")
+    const [taskDescription, setTaskDescription] = useState("")
+    const [taskStatus, setTaskStatus] = useState("Not Started")
 
-    function handleTaskChange(e: React.ChangeEvent<HTMLInputElement>, index: number) {
-        const newTasks = [...tasks]
-        newTasks[index] = { ...newTasks[index], title: e.target.value }
-        setTasks(newTasks)
-    }
+    // function handleAddTask() {
+
+    //     const newTask = {_id: taskId, title: taskTitle, description: taskDescription, status: taskStatus}
+    //     if (taskTitle && taskDescription && taskStatus) {
+    //         setTasks(newTask)
+    //     } else {
+    //         alert("detail missing")
+    //     }
+    //     setTaskTitle("")
+    //     setTaskDescription("")
+    //     setTaskStatus("Not Started")
+    // }
+
+
+
     async function handleCreatePlan() {
         try {
             const response = await fetch(`http://localhost:3000/users/${userId}/plans`, {
@@ -28,15 +41,16 @@ function CreatePlan() {
                 body: JSON.stringify({ title, description, tasks }),
                 headers: {
                     "Content-Type": "application/json"
-                }
+                },
             })
-            console.log("response>>>>>", response)
+            // console.log("response>>>>>", response)
             if (!response.ok) {
-                throw new Error("Whoops, registration failed")
+                console.log("Failed to create plan", response.statusText)
+                alert('Failed to create plan. Please try again later.')
             }
             const data = await response.json()
             window.alert('Congrates! You have created a plan successfully!')
-            console.log(data)
+            console.log("Your new plan>>>>>>>", data)
             // navigate('/login')
         } catch (err) {
             alert(err)
@@ -56,7 +70,25 @@ function CreatePlan() {
             <HelperText />
             </FormControl>
             <FormControl defaultValue="" required>
-            <Label>Task</Label>
+            <Label>Task Details</Label>
+            <StyledInput placeholder="Write your task title" onChange={e => setTaskTitle(e.target.value)} />
+            </FormControl>
+            <FormControl defaultValue="" required>
+            <StyledInput placeholder="Write your task description" onChange={e => setTaskDescription(e.target.value)}/>
+            </FormControl>
+            <FormControl defaultValue="" required>
+            <Label>Task Status</Label>
+            <RadioGroup
+                style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+                row
+                onChange={e => setTaskStatus(e.target.value as string)}
+            >
+                <FormControlLabel value="not started" control={<Radio />} label="Not Started" />
+                <FormControlLabel value="in progress" control={<Radio />} label="In Progress" />
+                <FormControlLabel value="finished" control={<Radio />} label="Finished" />
+            </RadioGroup>
+            {/* <Button variant='contained' size='small' onClick={handleAddTask}>Add Task</Button> */}
+            </FormControl>
             {/* {tasks.map((task, index) => (
                 <React.Fragment key={index}>
                     <StyledInput
@@ -67,9 +99,8 @@ function CreatePlan() {
                     <HelperText />
                 </React.Fragment>
             ))} */}
-            </FormControl>
             <Stack style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 30}} direction='row' spacing={4}>
-                <Button variant='contained' size='large' onClick={handleCreatePlan}>Create</Button>
+                <Button variant='contained' size='large' onClick={handleCreatePlan}>Create A New Plan</Button>
             </Stack>
         </>
     )
