@@ -75,9 +75,9 @@ function PlanCard(props: PlanProps) {
                     Visit plan Page!
                 </Button>
 
-                <Button variant="outlined" color='secondary' onClick={handleUpdatePlan}>
+                {/* <Button variant="outlined" color='secondary' onClick={handleUpdatePlan}>
                     Update plan!
-                </Button>
+                </Button> */}
 
                 <Button variant="outlined" color='error' onClick={handleDeletePlan}>
                     Delete plan!
