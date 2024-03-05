@@ -14,23 +14,23 @@ function CreatePlan() {
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [tasks, setTasks] = useState<Task[]>()
-    const [taskId, setTaskId] = useState("")
+    // const [taskId, setTaskId] = useState("")
     const [taskTitle, setTaskTitle] = useState("")
     const [taskDescription, setTaskDescription] = useState("")
     const [taskStatus, setTaskStatus] = useState("Not Started")
 
-    // function handleAddTask() {
+    function handleAddTask() {
 
-    //     const newTask = {_id: taskId, title: taskTitle, description: taskDescription, status: taskStatus}
-    //     if (taskTitle && taskDescription && taskStatus) {
-    //         setTasks(newTask)
-    //     } else {
-    //         alert("detail missing")
-    //     }
-    //     setTaskTitle("")
-    //     setTaskDescription("")
-    //     setTaskStatus("Not Started")
-    // }
+        const newTask = { title: taskTitle, description: taskDescription, status: taskStatus}
+        if (taskTitle && taskDescription && taskStatus) {
+            setTasks(newTask)
+        } else {
+            alert("detail missing")
+        }
+        setTaskTitle("")
+        setTaskDescription("")
+        setTaskStatus("Not Started")
+    }
 
 
 
@@ -61,33 +61,34 @@ function CreatePlan() {
             <h1>Create Your Plan</h1>
             <FormControl defaultValue="" required>
             <Label>Title</Label>
-            <StyledInput placeholder="Write your title here" onChange={e => setTitle(e.target.value)}/>
+            <StyledInput placeholder="Write your title here" value={title} onChange={e => setTitle(e.target.value)}/>
             <HelperText />
             </FormControl>
             <FormControl defaultValue="" required>
             <Label>Description</Label>
-            <StyledInput placeholder="Write your description here" onChange={e => setDescription(e.target.value)}/>
+            <StyledInput placeholder="Write your description here" value={description} onChange={e => setDescription(e.target.value)}/>
             <HelperText />
             </FormControl>
             <FormControl defaultValue="" required>
             <Label>Task Details</Label>
-            <StyledInput placeholder="Write your task title" onChange={e => setTaskTitle(e.target.value)} />
+            <StyledInput placeholder="Write your task title" value={taskTitle} onChange={e => setTaskTitle(e.target.value)} />
             </FormControl>
             <FormControl defaultValue="" required>
-            <StyledInput placeholder="Write your task description" onChange={e => setTaskDescription(e.target.value)}/>
+            <StyledInput placeholder="Write your task description" value={taskDescription} onChange={e => setTaskDescription(e.target.value)}/>
             </FormControl>
             <FormControl defaultValue="" required>
             <Label>Task Status</Label>
             <RadioGroup
                 style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
                 row
+                value={taskStatus}
                 onChange={e => setTaskStatus(e.target.value as string)}
             >
                 <FormControlLabel value="not started" control={<Radio />} label="Not Started" />
                 <FormControlLabel value="in progress" control={<Radio />} label="In Progress" />
                 <FormControlLabel value="finished" control={<Radio />} label="Finished" />
             </RadioGroup>
-            {/* <Button variant='contained' size='small' onClick={handleAddTask}>Add Task</Button> */}
+            <Button variant='contained' size='small' onClick={handleAddTask}>Add Task</Button>
             </FormControl>
             {/* {tasks.map((task, index) => (
                 <React.Fragment key={index}>

@@ -39,7 +39,7 @@ function UserCard(props: UserProps) {
         }
     }
     if (updated) {
-        window.alert('user was deleted')
+        window.alert('user was updated')
         navigate(`/users/${props.userId}`)
     }
 
