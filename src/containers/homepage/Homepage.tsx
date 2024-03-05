@@ -21,9 +21,9 @@ function Homepage() {
                     <Button variant='contained' size='large'>
                         <Link to='/register'>CREATE YOUR ACCOUNT</Link>
                     </Button>
-                    <Button variant='contained' size='large'>
+                    {/* <Button variant='contained' size='large'>
                         <Link to='/login'>LOGIN</Link>
-                    </Button>
+                    </Button> */}
                 </Stack>
             </Container>
             {/* <Calendar onChange={onChange} value={value} /> */}

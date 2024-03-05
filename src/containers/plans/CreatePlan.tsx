@@ -1,19 +1,16 @@
 
-import { FormControl } from "@mui/base/FormControl";
 import { useState } from "react";
 import { Button, FormControlLabel, Radio, RadioGroup, Stack } from '@mui/material';
 import StyledInput from '../../components/StyledInput';
 import HelperText from '../../components/HelperText';
 import Label from "../../components/Label";
 import { useNavigate, useParams } from "react-router-dom";
-import { Task } from "../../types";
 
 function CreatePlan() {
     const { userId } = useParams()
     const navigate = useNavigate()
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
-    const [tasks, setTasks] = useState([])
     const [taskTitle, setTaskTitle] = useState("")
     const [taskDescription, setTaskDescription] = useState("")
     const [taskStatus, setTaskStatus] = useState("Not Started")
