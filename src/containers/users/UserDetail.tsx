@@ -8,18 +8,19 @@ function UserDetail() {
     const params = useParams()
     // const id = (params.userId)?.split(":")[1]
     const [user, setUser] = useState<User>()
-    const [username, setUsername] = useState("")
-    const [userage, setUserage] = useState("")
-    const [err, setErr] = useState<Boolean>(false)
-    const [updated, setUpdated] = useState<Boolean>(false)
-    const [isEditing, setIsEditing] = useState<Boolean>(false)
+    const [name, setName] = useState("")
+    const [age, setAge] = useState("")
+    // const [password, setPassword] = useState("")
+    const [err, setErr] = useState(false)
+    const [updated, setUpdated] = useState(false)
+    const [isEditing, setIsEditing] = useState(false)
     useEffect(() => {
         fetch(`http://localhost:3000/users/${params.userId}`)
         .then(res => res.json())
         .then(data =>{
             setUser(data.user)
-            setUserage(data.user.age)
-            setUsername(data.user.name)
+            setAge(data.user.age)
+            setName(data.user.name)
         })
         .catch(() => setErr(true))
     }, [])
@@ -37,7 +38,7 @@ function UserDetail() {
                 headers: {
                 'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ username, userage }),
+                body: JSON.stringify({ name, age }),
             })
             if (!response.ok) {
                 throw new Error('Failed to update user')
@@ -84,11 +85,12 @@ function UserDetail() {
                 isEditing&&
                 (
                     <div>
-                        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
-                        <input type="text" value={userage} onChange={(e) => setUserage(e.target.value)}/>
-                        <Button variant="contained" onClick={() => {
+                        <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
+                        <input type="text" value={age} onChange={(e) => setAge(e.target.value)}/>
+                        {/* <input type="text" value={age} onChange={(e) => setPassword(e.target.value)}/> */}
+                        <Button variant="contained" onClick={async() => {
+                            await handleUserSave()
                             setIsEditing(false)
-                            handleUserSave()
                             }}
                         > Save</Button>
                         <Button variant="contained" onClick={() => setIsEditing(false)}> Cancel </Button>
