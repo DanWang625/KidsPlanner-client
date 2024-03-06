@@ -16,6 +16,7 @@ export interface Plan {
     title: string;
     description: string;
     tasks: [Task]
+    user: User
 }
 
 export interface Notification {

@@ -24,12 +24,11 @@ function CreatePlan() {
         try {
             const response = await fetch(`http://localhost:3000/users/${userId}/plans`, {
                 method: "POST",
-                body: JSON.stringify({ title, description, tasks:[newTask]
-                //     [{
-                //     title: taskTitle,
-                //     description: taskDescription,
-                //     status: taskStatus
-                // }]
+                body: JSON.stringify({
+                    title,
+                    description,
+                    tasks:[newTask],
+                    userId: userId
             }),
                 headers: {
                     "Content-Type": "application/json"

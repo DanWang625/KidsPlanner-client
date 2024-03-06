@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom"
-
 import { useEffect, useState } from "react"
 import { Plan } from "../../types"
 import TaskStatus from "../../components/TaskStatus"

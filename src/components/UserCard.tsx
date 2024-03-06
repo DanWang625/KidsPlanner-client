@@ -76,9 +76,9 @@ function UserCard(props: UserProps) {
                 <Button variant="outlined" onClick={() => navigate(`/users/${props.userId}`)}>
                     Visit user Page!
                 </Button>
-                {/* <Button variant="outlined" color='secondary' onClick={() => setIsEditing(!isEditing)}>
-                    Update user!
-                </Button> */}
+                <Button variant="outlined" color='secondary' onClick={() => navigate(`/users/${props.userId}/notifications`)}>
+                    Notifications!
+                </Button>
                 <Button variant="outlined" color='error' onClick={handleDeleteUser}>
                     Delete user!
                 </Button>
