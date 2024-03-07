@@ -36,6 +36,13 @@ h1 {
   line-height: 1.1;
 }
 
+h3 {
+  color: #747bff;
+  margin-top: 3rem;
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;

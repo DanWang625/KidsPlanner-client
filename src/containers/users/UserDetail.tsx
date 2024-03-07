@@ -3,6 +3,7 @@ import { User } from "../../types"
 import { useEffect, useState } from "react"
 import { Button, ButtonGroup } from "@mui/material"
 import EditIcon from '@mui/icons-material/Edit'
+import NotificationsIcon from '@mui/icons-material/Notifications'
 
 function UserDetail() {
     const navigate = useNavigate()
@@ -81,7 +82,14 @@ function UserDetail() {
                     Edit User
                     <EditIcon/>
                 </Button>
-                {/* <Button variant="contained" onClick={handleDeleteUser}>Delete</Button> */}
+                <Button
+                    color="warning"
+                    variant="contained"
+                    onClick={() => navigate(`/users/${params.userId}/notifications`)}
+                >
+                    Notifications
+                    <NotificationsIcon/>
+                </Button>
             </ButtonGroup>
             {
                 isEditing&&

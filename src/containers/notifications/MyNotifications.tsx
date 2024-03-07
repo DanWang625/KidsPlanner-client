@@ -2,42 +2,33 @@ import { useEffect, useState } from "react"
 import { getNotifications } from "../../api/api"
 import { useNavigate, useParams } from "react-router-dom"
 import { Notification  } from "../../types"
-import { List } from "@mui/material"
+import { Button, List } from "@mui/material"
 
 function MyNotifications() {
-    const params = useParams()
-    const id = params.userId
-    const [MyNotifications, setMyNotifications] = useState<Notification[]>([])
-    if (id) { useEffect(() => {
-        getNotifications(id).then((data) => {
+    const navigate = useNavigate()
+    const { userId } = useParams()
+    const [myNotifications, setMyNotifications] = useState<Notification[]>([])
+    if (userId) { useEffect(() => {
+        getNotifications(userId).then((data) => {
             setMyNotifications(data)
         })
     }, [])}
-    for (let notification of MyNotifications) {
-        if (notification.user._id === id) {
-            if (MyNotifications.length === 0) {
-                return (
-                    <>
-                        <h2>Notification Page</h2>
-                        <h3>No message</h3>
-                    </>
-                )
-            }
-            return (
-                <>
-                    <h2>Notification Page</h2>
-                    <h3>your messages: </h3>
-                    {MyNotifications.map(noti =>
-                        <List key={noti._id}>{noti.message}</List>
-                        )}
-                </>
-            )
-        }
-    }
     return (
         <>
-            <h2>Notification Page</h2>
-            <h3>No message</h3>
+        <h1>Notifications Page</h1>
+            {myNotifications.some(noti => noti.user._id === userId) ? (
+                <>
+                <h3>Your messages:</h3>
+                {myNotifications
+                    .filter(notification => notification.user._id === userId)
+                    .map(notification => (
+                        <List sx={{ fontSize: 25 }} key={notification._id}>{notification.message}</List>
+                ))}
+                </>
+            ) : (
+                <h3>No message</h3>
+            )}
+            <Button sx={{ marginTop: 5 }} variant="contained" onClick={() => navigate(`/users/${userId}/plans`)}>Check Plans</Button>
         </>
     )
 }

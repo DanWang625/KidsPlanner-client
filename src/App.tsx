@@ -30,24 +30,23 @@ const theme = createTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <BrowserRouter basename="/">
-      {/* <a href="/users">users page</a> */}
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/users/:userId" element={<UserDetail />} />
-          <Route path="/users/:userId/plans" element={<Plans />} />
-          <Route path="users/:userId/plans/create" element={<CreatePlan />} />
-          <Route path="/users/:userId/plans/:id" element={<PlanDetail />} />
-          <Route path="users/:userId/notifications" element={<MyNotifications />} />
-          <Route path="users/:userId/notifications/:id" element={<NotificationDetail />} />
-        </Routes>
-      </BrowserRouter>
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+              <Route path="/users" element={<Users />} />
+              <Route path="/users/:userId" element={<UserDetail />} />
+              <Route path="/users/:userId/plans" element={<Plans />} />
+              <Route path="/users/:userId/plans/create" element={<CreatePlan />} />
+              <Route path="/users/:userId/plans/:id" element={<PlanDetail />} />
+              <Route path="/users/:userId/notifications" element={<MyNotifications />} />
+              <Route path="/users/:userId/notifications/:id" element={<NotificationDetail />} />
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
   );
 }
 
