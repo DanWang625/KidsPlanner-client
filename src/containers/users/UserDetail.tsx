@@ -1,9 +1,10 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { User } from "../../types"
 import { useEffect, useState } from "react"
-import { Button, ButtonGroup } from "@mui/material"
+import { Button, ButtonGroup, Paper } from "@mui/material"
 import EditIcon from '@mui/icons-material/Edit'
 import NotificationsIcon from '@mui/icons-material/Notifications'
+import StyledInput from "../../components/StyledInput"
 
 function UserDetail() {
     const navigate = useNavigate()
@@ -94,17 +95,17 @@ function UserDetail() {
             {
                 isEditing&&
                 (
-                    <div>
-                        <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
-                        <input type="text" value={age} onChange={(e) => setAge(e.target.value)}/>
+                    <Paper sx={{ margin: 10, padding: 10 }}>
+                        <StyledInput sx={{ margin: 1, padding: 1 }} type="text" value={name} onChange={(e) => setName(e.target.value)}/>
+                        <StyledInput sx={{ margin: 1, padding: 1 }} type="text" value={age} onChange={(e) => setAge(e.target.value)}/>
                         {/* <input type="text" value={age} onChange={(e) => setPassword(e.target.value)}/> */}
-                        <Button variant="contained" onClick={async() => {
+                        <Button sx={{ margin: 1, padding: 1 }} variant="contained" onClick={async() => {
                             await handleUserSave()
                             setIsEditing(false)
                             }}
                         > Save</Button>
-                        <Button variant="contained" onClick={() => setIsEditing(false)}> Cancel </Button>
-                    </div>
+                        <Button sx={{ margin: 1, padding: 1 }} variant="contained" onClick={() => setIsEditing(false)}> Cancel </Button>
+                    </Paper>
                 )
             }
         </>
