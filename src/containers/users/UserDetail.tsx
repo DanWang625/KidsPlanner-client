@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { User } from "../../types"
 import { useEffect, useState } from "react"
 import { Button, ButtonGroup } from "@mui/material"
+import EditIcon from '@mui/icons-material/Edit'
 
 function UserDetail() {
     const navigate = useNavigate()
@@ -69,7 +70,7 @@ function UserDetail() {
                     color="secondary"
                     onClick={() => navigate(`/users/${params.userId}/plans/create`)}
                 >
-                    Click to create your plans
+                    Click to create new plans
                 </Button>
                 <Button
                     variant="contained"
@@ -78,6 +79,7 @@ function UserDetail() {
                     }}
                 >
                     Edit User
+                    <EditIcon/>
                 </Button>
                 {/* <Button variant="contained" onClick={handleDeleteUser}>Delete</Button> */}
             </ButtonGroup>

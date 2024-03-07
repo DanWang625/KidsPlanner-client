@@ -12,7 +12,6 @@ function Plans() {
     if (userId) {
         useEffect(() => {
             getPlans(userId).then((data) => {
-                console.log(data)
                 setPlans(data)
             })
         }, [])

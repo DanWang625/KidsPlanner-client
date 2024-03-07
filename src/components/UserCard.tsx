@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Card, CardActions, CardContent, styled} from "@mui/material";
 import {  useNavigate } from "react-router-dom";
-
+import DeleteIcon from '@mui/icons-material/Delete';
 interface UserProps {
     userName: string;
     userAge: number;
@@ -80,7 +80,8 @@ function UserCard(props: UserProps) {
                     Notifications!
                 </Button>
                 <Button variant="outlined" color='error' onClick={handleDeleteUser}>
-                    Delete user!
+                    Delete
+                    <DeleteIcon/>
                 </Button>
             </CardActions>
         </StyledCard>

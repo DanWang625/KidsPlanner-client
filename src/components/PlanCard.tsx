@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button, Card, CardActions, CardContent, styled} from "@mui/material";
 import {  useNavigate } from "react-router-dom";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 interface PlanProps {
     userId: string;
@@ -72,7 +73,7 @@ function PlanCard(props: PlanProps) {
             </CardContent>
             <CardActions>
                 <Button variant="outlined" onClick={() => navigate(`/users/${props.userId}/plans/${props.planId}`)}>
-                    Visit plan Page!
+                    Check Plan Details!
                 </Button>
 
                 {/* <Button variant="outlined" color='secondary' onClick={handleUpdatePlan}>
@@ -80,7 +81,8 @@ function PlanCard(props: PlanProps) {
                 </Button> */}
 
                 <Button variant="outlined" color='error' onClick={handleDeletePlan}>
-                    Delete plan!
+                    Delete
+                    <DeleteIcon/>
                 </Button>
             </CardActions>
         </StyledCard>

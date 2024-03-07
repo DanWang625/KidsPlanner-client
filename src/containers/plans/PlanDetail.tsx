@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { Plan } from "../../types"
-import TaskStatus from "../../components/TaskStatus"
 import { List, ListItem, ListItemText } from "@mui/material"
 import React from "react"
 
@@ -25,7 +24,7 @@ function PlanDetail() {
             <>
                 <h2>You have 1 task for {plan.title} </h2>
                 <h3>do {plan.tasks[0].description} for {plan.tasks[0].title}</h3>
-                <TaskStatus />
+                {plan.tasks[0].status}
             </>
         )
     }
@@ -36,8 +35,12 @@ function PlanDetail() {
                 {plan.tasks.map((task, index) =>
                     <React.Fragment key={index}>
                        <ListItem />
-                       <ListItemText primary={`${task.title}, ${task.description}`} />
-                       <TaskStatus />
+
+                        <ListItemText
+                            primary={`${task.title}, ${task.description}`}
+                        />
+                            {task.status}
+
                     </React.Fragment>
                 )}
             </List>
