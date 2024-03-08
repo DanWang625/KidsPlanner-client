@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from 'react-router-dom';
-import LoginIcon from '@mui/icons-material/Login';
+// import LoginIcon from '@mui/icons-material/Login';
 
 export default function ButtonAppBar() {
   const navigate = useNavigate()
@@ -36,7 +36,7 @@ export default function ButtonAppBar() {
               onClick={() => navigate('/login')}
             >
               Log in
-              <LoginIcon/>
+              {/* <LoginIcon/> */}
             </Button>
         </Toolbar>
       </AppBar>
