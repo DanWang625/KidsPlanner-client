@@ -16,7 +16,7 @@ This application is built with React, MUI(Material-UI).
 3. Open your web browser and go to `http://localhost:3000` to view. Any changes you make to the code will automatically reflected in the browser.
 
 ## Folder Structure
--src/: Contains the source code for the Kids Planner Frontend.
---components/: Contains reusable React components used throughout the application.
+- **src/**: Contains the source code for the Kids Planner Frontend.
+-- **components/**: Contains reusable React components used throughout the application.
 
 ## Happy coding! 😊
