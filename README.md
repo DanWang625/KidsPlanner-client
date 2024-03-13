@@ -19,4 +19,4 @@ This application is built with React, MUI(Material-UI).
 -src/: Contains the source code for the Kids Planner Frontend.
 --components/: Contains reusable React components used throughout the application.
 
-## Happy coding!🎶
+## Happy coding! 😊
