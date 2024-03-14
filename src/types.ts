@@ -24,3 +24,23 @@ export interface Notification {
     message: string;
     user: User
 }
+
+export interface UserProps {
+    userName: string;
+    userAge: number;
+    userId: string;
+}
+
+export interface PlanProps {
+    userId: string;
+    planTitle: string;
+    planDescription: string;
+    planId: string;
+}
+
+export interface TaskProps {
+    taskId: string;
+    taskTitle: string;
+    description: string;
+    taskStatus: ['Not Started', 'In Progress', 'Finished']
+}

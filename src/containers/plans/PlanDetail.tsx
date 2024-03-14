@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { Plan } from "../../types"
-import { List, ListItem, ListItemText } from "@mui/material"
+import { Card, List, ListItem, ListItemText } from "@mui/material"
 import React from "react"
+import Task from "../../components/Task"
 
 function PlanDetail() {
     // const navigate = useNavigate()
@@ -31,7 +32,7 @@ function PlanDetail() {
     return (
         <>
             <h2>You have {plan.tasks.length} tasks for {plan.title}</h2>
-            <List>
+            {/* <List>
                 {plan.tasks.map((task, index) =>
                     <React.Fragment key={index}>
                        <ListItem />
@@ -43,8 +44,17 @@ function PlanDetail() {
 
                     </React.Fragment>
                 )}
-            </List>
-
+            </List> */}
+            {plan.tasks.map(task =>
+            <Card key={task._id}>
+                <Task
+                    taskId={task._id}
+                    taskTitle={task.title}
+                    taskStatus={task.status}
+                    description={task.description}
+                />
+            </Card>
+            )}
         </>
     )
 }

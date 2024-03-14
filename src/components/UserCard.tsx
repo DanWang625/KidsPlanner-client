@@ -1,13 +1,8 @@
 import { useState } from 'react';
 import { Button, Card, CardActions, CardContent, styled} from "@mui/material";
 import {  useNavigate } from "react-router-dom";
-import DeleteIcon from '@mui/icons-material/Delete';
-interface UserProps {
-    userName: string;
-    userAge: number;
-    userId: string;
-}
-
+import DeleteIcon from "@mui/icons-material/Delete";
+import { UserProps } from "../types"
 const StyledCard = styled(Card)`
     margin: 40px auto;
     width: 60%;
