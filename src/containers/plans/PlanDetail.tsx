@@ -1,8 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { Plan } from "../../types"
-import { Card, List, ListItem, ListItemText } from "@mui/material"
-import React from "react"
+import { Card } from "@mui/material"
 import Task from "../../components/Task"
 
 function PlanDetail() {
